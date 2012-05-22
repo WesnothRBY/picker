@@ -1,0 +1,140 @@
+diff -rc cache/factions/drakes.cfg editable/factions/drakes.cfg
+*** cache/factions/drakes.cfg	2012-01-28 11:37:51.610455393 +0100
+--- editable/factions/drakes.cfg	2012-01-28 12:03:52.001039153 +0100
+***************
+*** 5,12 ****
+      image="units/drakes/flare.png"
+      {MAGENTA_IS_THE_TEAM_COLOR}
+      type=Drake Flare
+!     leader=Drake Flare,Fire Drake,Drake Arbiter,Drake Thrasher,Drake Warrior,Saurian Oracle,Saurian Soothsayer
+!     random_leader=Drake Flare,Fire Drake,Drake Arbiter,Drake Thrasher,Drake Warrior
+      recruit=Drake Burner,Drake Clasher,Drake Glider,Drake Fighter,Saurian Skirmisher,Saurian Augur
+      terrain_liked=Hh, Ha, Ds, Ss
+  [/multiplayer_side]
+--- 5,11 ----
+      image="units/drakes/flare.png"
+      {MAGENTA_IS_THE_TEAM_COLOR}
+      type=Drake Flare
+!     leader=Drake Flare,Drake Arbiter,Drake Thrasher,Drake Warrior,Fire Drake
+      recruit=Drake Burner,Drake Clasher,Drake Glider,Drake Fighter,Saurian Skirmisher,Saurian Augur
+      terrain_liked=Hh, Ha, Ds, Ss
+  [/multiplayer_side]
+diff -rc cache/factions/knalgans.cfg editable/factions/knalgans.cfg
+*** cache/factions/knalgans.cfg	2012-01-28 11:37:51.610455393 +0100
+--- editable/factions/knalgans.cfg	2012-01-28 12:06:50.533658383 +0100
+***************
+*** 2,19 ****
+  [multiplayer_side]
+      id=Knalgan Alliance
+      name=_"Knalgan Alliance"
+!     image="units/dwarves/steelclad.png"
+      {MAGENTA_IS_THE_TEAM_COLOR}
+!     type=Dwarvish Steelclad
+!     leader=Dwarvish Steelclad,Dwarvish Thunderguard,Dwarvish Stalwart,Rogue,Trapper
+      recruit=Dwarvish Guardsman,Dwarvish Fighter,Dwarvish Ulfserker,Dwarvish Thunderer,Thief,Poacher,Footpad,Gryphon Rider
+      terrain_liked=Hh, Ha, Mm
+-     [ai]
+-         [aspect]
+-             id=recruitment_pattern
+-             [facet]
+-                 value=fighter,fighter,fighter,mixed fighter,archer,scout
+-             [/facet]
+-         [/aspect]
+-     [/ai]
+  [/multiplayer_side]
+--- 2,11 ----
+  [multiplayer_side]
+      id=Knalgan Alliance
+      name=_"Knalgan Alliance"
+!     image="units/dwarves/pathfinder.png"
+      {MAGENTA_IS_THE_TEAM_COLOR}
+!     type=Dwarvish Pathfinder
+!     leader=Dwarvish Pathfinder,Dwarvish Steelclad,Dwarvish Thunderguard,Outlaw,Rogue
+      recruit=Dwarvish Guardsman,Dwarvish Fighter,Dwarvish Ulfserker,Dwarvish Thunderer,Thief,Poacher,Footpad,Gryphon Rider
+      terrain_liked=Hh, Ha, Mm
+  [/multiplayer_side]
+diff -rc cache/factions/loyalists.cfg editable/factions/loyalists.cfg
+*** cache/factions/loyalists.cfg	2012-01-28 11:37:51.610455393 +0100
+--- editable/factions/loyalists.cfg	2012-01-28 11:37:52.469444680 +0100
+***************
+*** 9,15 ****
+      random_leader=Lieutenant,Swordsman,Pikeman,Javelineer,Longbowman,White Mage,Red Mage
+      recruit=Cavalryman,Horseman,Spearman,Fencer,Heavy Infantryman,Bowman,Mage,Merman Fighter
+      terrain_liked=Gg, Ww, Wo
+-     [ai]
+-         recruitment_pattern=fighter,fighter,fighter,archer,mixed fighter,scout
+-     [/ai]
+  [/multiplayer_side]
+--- 9,12 ----
+diff -rc cache/factions/northerners.cfg editable/factions/northerners.cfg
+*** cache/factions/northerners.cfg	2012-01-28 11:37:51.610455393 +0100
+--- editable/factions/northerners.cfg	2012-01-28 12:07:48.079888048 +0100
+***************
+*** 2,14 ****
+  [multiplayer_side]
+      id=Northerners
+      name= _"Northerners"
+!     image="units/orcs/warrior.png"
+      {MAGENTA_IS_THE_TEAM_COLOR}
+!     type=Orcish Warrior
+!     leader=Orcish Warrior,Troll,Troll Rocklobber,Orcish Crossbowman,Orcish Slayer
+      recruit=Orcish Grunt,Troll Whelp,Wolf Rider,Orcish Archer,Orcish Assassin,Naga Fighter,Goblin Spearman
+      terrain_liked=Hh, Ha, Mm, Ss
+-     [ai]
+-         recruitment_pattern=fighter,fighter,fighter,mixed fighter,archer,scout
+-     [/ai]
+  [/multiplayer_side]
+--- 2,11 ----
+  [multiplayer_side]
+      id=Northerners
+      name= _"Northerners"
+!     image="units/orcs/ruler.png"
+      {MAGENTA_IS_THE_TEAM_COLOR}
+!     type=Orcish Ruler
+!     leader=Orcish Ruler,Orcish Slayer,Orcish Warrior,Troll Hero,Troll Shaman
+      recruit=Orcish Grunt,Troll Whelp,Wolf Rider,Orcish Archer,Orcish Assassin,Naga Fighter,Goblin Spearman
+      terrain_liked=Hh, Ha, Mm, Ss
+  [/multiplayer_side]
+diff -rc cache/factions/rebels.cfg editable/factions/rebels.cfg
+*** cache/factions/rebels.cfg	2012-01-28 11:37:51.610455393 +0100
+--- editable/factions/rebels.cfg	2012-01-28 12:09:35.609405766 +0100
+***************
+*** 2,15 ****
+  [multiplayer_side]
+      id=Rebels
+      name= _"Rebels"
+!     image="units/elves-wood/captain.png"
+      {MAGENTA_IS_THE_TEAM_COLOR}
+!     type=Elvish Captain
+!     leader=Elvish Captain,Elvish Hero,Elvish Ranger,Elvish Marksman,Elvish Druid,Elvish Sorceress,White Mage,Red Mage,Elder Wose
+!     random_leader=Elvish Captain,Elvish Hero,Elvish Ranger,Elvish Marksman,Elvish Druid,Elvish Sorceress,White Mage,Red Mage
+      recruit=Elvish Fighter,Elvish Archer,Mage,Elvish Shaman,Elvish Scout,Wose,Merman Hunter
+      terrain_liked=Ff, Fa, Ss, Ww
+-     [ai]
+-         recruitment_pattern=fighter,fighter,archer,archer,mixed fighter,healer,scout
+-     [/ai]
+  [/multiplayer_side]
+--- 2,11 ----
+  [multiplayer_side]
+      id=Rebels
+      name= _"Rebels"
+!     image="units/elves-wood/lord.png"
+      {MAGENTA_IS_THE_TEAM_COLOR}
+!     type=Elvish Lord
+!     leader=Elvish Lord,Elvish Captain,Elvish Marksman,Elvish Sorceress,Elder Wose
+      recruit=Elvish Fighter,Elvish Archer,Mage,Elvish Shaman,Elvish Scout,Wose,Merman Hunter
+      terrain_liked=Ff, Fa, Ss, Ww
+  [/multiplayer_side]
+diff -rc cache/factions/undead.cfg editable/factions/undead.cfg
+*** cache/factions/undead.cfg	2012-01-28 11:37:51.610455393 +0100
+--- editable/factions/undead.cfg	2012-01-28 11:37:52.490444418 +0100
+***************
+*** 9,15 ****
+      random_leader=Dark Sorcerer,Revenant,Deathblade,Bone Shooter
+      recruit=Skeleton,Skeleton Archer,Walking Corpse,Ghost,Vampire Bat,Dark Adept,Ghoul
+      terrain_liked=Ss, Hh, Ha, Ww
+-     [ai]
+-         recruitment_pattern=fighter,fighter,archer,fighter,scout,archer
+-     [/ai]
+  [/multiplayer_side]
+--- 9,12 ----

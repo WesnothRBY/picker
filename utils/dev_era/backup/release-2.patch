@@ -1,0 +1,342 @@
+diff -rc cache/factions/drakes.cfg editable/factions/drakes.cfg
+*** cache/factions/drakes.cfg	2012-01-29 09:58:39.952744342 +0100
+--- editable/factions/drakes.cfg	2012-01-29 09:58:40.824755307 +0100
+***************
+*** 5,12 ****
+      image="units/drakes/flare.png"
+      {MAGENTA_IS_THE_TEAM_COLOR}
+      type=Drake Flare
+!     leader=Drake Flare,Fire Drake,Drake Arbiter,Drake Thrasher,Drake Warrior,Saurian Oracle,Saurian Soothsayer
+!     random_leader=Drake Flare,Fire Drake,Drake Arbiter,Drake Thrasher,Drake Warrior
+      recruit=Drake Burner,Drake Clasher,Drake Glider,Drake Fighter,Saurian Skirmisher,Saurian Augur
+      terrain_liked=Hh, Ha, Ds, Ss
+  [/multiplayer_side]
+--- 5,11 ----
+      image="units/drakes/flare.png"
+      {MAGENTA_IS_THE_TEAM_COLOR}
+      type=Drake Flare
+!     leader=Drake Flare,Drake Arbiter,Drake Thrasher,Drake Warrior,Fire Drake
+      recruit=Drake Burner,Drake Clasher,Drake Glider,Drake Fighter,Saurian Skirmisher,Saurian Augur
+      terrain_liked=Hh, Ha, Ds, Ss
+  [/multiplayer_side]
+diff -rc cache/factions/knalgans.cfg editable/factions/knalgans.cfg
+*** cache/factions/knalgans.cfg	2012-01-29 09:58:39.952744342 +0100
+--- editable/factions/knalgans.cfg	2012-01-29 09:58:40.824755307 +0100
+***************
+*** 2,19 ****
+  [multiplayer_side]
+      id=Knalgan Alliance
+      name=_"Knalgan Alliance"
+!     image="units/dwarves/steelclad.png"
+      {MAGENTA_IS_THE_TEAM_COLOR}
+!     type=Dwarvish Steelclad
+!     leader=Dwarvish Steelclad,Dwarvish Thunderguard,Dwarvish Stalwart,Rogue,Trapper
+      recruit=Dwarvish Guardsman,Dwarvish Fighter,Dwarvish Ulfserker,Dwarvish Thunderer,Thief,Poacher,Footpad,Gryphon Rider
+      terrain_liked=Hh, Ha, Mm
+-     [ai]
+-         [aspect]
+-             id=recruitment_pattern
+-             [facet]
+-                 value=fighter,fighter,fighter,mixed fighter,archer,scout
+-             [/facet]
+-         [/aspect]
+-     [/ai]
+  [/multiplayer_side]
+--- 2,11 ----
+  [multiplayer_side]
+      id=Knalgan Alliance
+      name=_"Knalgan Alliance"
+!     image="units/dwarves/pathfinder.png"
+      {MAGENTA_IS_THE_TEAM_COLOR}
+!     type=Dwarvish Pathfinder
+!     leader=Dwarvish Pathfinder,Dwarvish Steelclad,Dwarvish Thunderguard,Outlaw,Rogue
+      recruit=Dwarvish Guardsman,Dwarvish Fighter,Dwarvish Ulfserker,Dwarvish Thunderer,Thief,Poacher,Footpad,Gryphon Rider
+      terrain_liked=Hh, Ha, Mm
+  [/multiplayer_side]
+diff -rc cache/factions/loyalists.cfg editable/factions/loyalists.cfg
+*** cache/factions/loyalists.cfg	2012-01-29 09:58:39.952744342 +0100
+--- editable/factions/loyalists.cfg	2012-01-29 09:58:40.832755410 +0100
+***************
+*** 9,15 ****
+      random_leader=Lieutenant,Swordsman,Pikeman,Javelineer,Longbowman,White Mage,Red Mage
+      recruit=Cavalryman,Horseman,Spearman,Fencer,Heavy Infantryman,Bowman,Mage,Merman Fighter
+      terrain_liked=Gg, Ww, Wo
+-     [ai]
+-         recruitment_pattern=fighter,fighter,fighter,archer,mixed fighter,scout
+-     [/ai]
+  [/multiplayer_side]
+--- 9,12 ----
+diff -rc cache/factions/northerners.cfg editable/factions/northerners.cfg
+*** cache/factions/northerners.cfg	2012-01-29 09:58:39.952744342 +0100
+--- editable/factions/northerners.cfg	2012-01-29 09:58:40.833755423 +0100
+***************
+*** 2,14 ****
+  [multiplayer_side]
+      id=Northerners
+      name= _"Northerners"
+!     image="units/orcs/warrior.png"
+      {MAGENTA_IS_THE_TEAM_COLOR}
+!     type=Orcish Warrior
+!     leader=Orcish Warrior,Troll,Troll Rocklobber,Orcish Crossbowman,Orcish Slayer
+      recruit=Orcish Grunt,Troll Whelp,Wolf Rider,Orcish Archer,Orcish Assassin,Naga Fighter,Goblin Spearman
+      terrain_liked=Hh, Ha, Mm, Ss
+-     [ai]
+-         recruitment_pattern=fighter,fighter,fighter,mixed fighter,archer,scout
+-     [/ai]
+  [/multiplayer_side]
+--- 2,11 ----
+  [multiplayer_side]
+      id=Northerners
+      name= _"Northerners"
+!     image="units/orcs/ruler.png"
+      {MAGENTA_IS_THE_TEAM_COLOR}
+!     type=Orcish Ruler
+!     leader=Orcish Ruler,Orcish Slayer,Orcish Warrior,Troll Hero,Troll Shaman
+      recruit=Orcish Grunt,Troll Whelp,Wolf Rider,Orcish Archer,Orcish Assassin,Naga Fighter,Goblin Spearman
+      terrain_liked=Hh, Ha, Mm, Ss
+  [/multiplayer_side]
+diff -rc cache/factions/rebels.cfg editable/factions/rebels.cfg
+*** cache/factions/rebels.cfg	2012-01-29 09:58:39.952744342 +0100
+--- editable/factions/rebels.cfg	2012-01-29 09:58:40.833755423 +0100
+***************
+*** 2,15 ****
+  [multiplayer_side]
+      id=Rebels
+      name= _"Rebels"
+!     image="units/elves-wood/captain.png"
+      {MAGENTA_IS_THE_TEAM_COLOR}
+!     type=Elvish Captain
+!     leader=Elvish Captain,Elvish Hero,Elvish Ranger,Elvish Marksman,Elvish Druid,Elvish Sorceress,White Mage,Red Mage,Elder Wose
+!     random_leader=Elvish Captain,Elvish Hero,Elvish Ranger,Elvish Marksman,Elvish Druid,Elvish Sorceress,White Mage,Red Mage
+      recruit=Elvish Fighter,Elvish Archer,Mage,Elvish Shaman,Elvish Scout,Wose,Merman Hunter
+      terrain_liked=Ff, Fa, Ss, Ww
+-     [ai]
+-         recruitment_pattern=fighter,fighter,archer,archer,mixed fighter,healer,scout
+-     [/ai]
+  [/multiplayer_side]
+--- 2,11 ----
+  [multiplayer_side]
+      id=Rebels
+      name= _"Rebels"
+!     image="units/elves-wood/lord.png"
+      {MAGENTA_IS_THE_TEAM_COLOR}
+!     type=Elvish Lord
+!     leader=Elvish Lord,Elvish Captain,Elvish Marksman,Elvish Sorceress,Elder Wose
+      recruit=Elvish Fighter,Elvish Archer,Mage,Elvish Shaman,Elvish Scout,Wose,Merman Hunter
+      terrain_liked=Ff, Fa, Ss, Ww
+  [/multiplayer_side]
+diff -rc cache/factions/undead.cfg editable/factions/undead.cfg
+*** cache/factions/undead.cfg	2012-01-29 09:58:39.952744342 +0100
+--- editable/factions/undead.cfg	2012-01-29 09:58:40.834755436 +0100
+***************
+*** 9,15 ****
+      random_leader=Dark Sorcerer,Revenant,Deathblade,Bone Shooter
+      recruit=Skeleton,Skeleton Archer,Walking Corpse,Ghost,Vampire Bat,Dark Adept,Ghoul
+      terrain_liked=Ss, Hh, Ha, Ww
+-     [ai]
+-         recruitment_pattern=fighter,fighter,archer,fighter,scout,archer
+-     [/ai]
+  [/multiplayer_side]
+--- 9,12 ----
+diff -rc cache/units/drakes/Glider.cfg editable/units/drakes/Glider.cfg
+*** cache/units/drakes/Glider.cfg	2012-01-29 09:58:39.960744444 +0100
+--- editable/units/drakes/Glider.cfg	2012-01-29 10:00:54.602979635 +0100
+***************
+*** 7,13 ****
+      {MAGENTA_IS_THE_TEAM_COLOR}
+      ellipse="misc/ellipse"
+      profile="portraits/drakes/glider.png"
+!     hitpoints=32
+      movement_type=drakeglide
+      movement=8
+      experience=35
+--- 7,13 ----
+      {MAGENTA_IS_THE_TEAM_COLOR}
+      ellipse="misc/ellipse"
+      profile="portraits/drakes/glider.png"
+!     hitpoints=33
+      movement_type=drakeglide
+      movement=8
+      experience=35
+diff -rc cache/units/elves/Shaman.cfg editable/units/elves/Shaman.cfg
+*** cache/units/elves/Shaman.cfg	2012-01-29 09:58:39.956744392 +0100
+--- editable/units/elves/Shaman.cfg	2012-01-29 10:01:47.764242056 +0100
+***************
+*** 41,47 ****
+          name=staff
+          description=_"staff"
+          type=impact
+!         damage=3
+          number=2
+          range=melee
+          icon=attacks/druidstaff.png
+--- 41,47 ----
+          name=staff
+          description=_"staff"
+          type=impact
+!         damage=4
+          number=2
+          range=melee
+          icon=attacks/druidstaff.png
+***************
+*** 53,59 ****
+          [specials]
+              {WEAPON_SPECIAL_SLOW}
+          [/specials]
+!         damage=3
+          number=2
+          range=ranged
+      [/attack]
+--- 53,59 ----
+          [specials]
+              {WEAPON_SPECIAL_SLOW}
+          [/specials]
+!         damage=4
+          number=2
+          range=ranged
+      [/attack]
+diff -rc cache/units/humans/Outlaw_Footpad.cfg editable/units/humans/Outlaw_Footpad.cfg
+*** cache/units/humans/Outlaw_Footpad.cfg	2012-01-29 09:58:39.959744431 +0100
+--- editable/units/humans/Outlaw_Footpad.cfg	2012-01-29 10:02:14.518332273 +0100
+***************
+*** 39,45 ****
+          icon=attacks/club-small.png
+          type=impact
+          range=melee
+!         damage=4
+          number=2
+      [/attack]
+      [attack]
+--- 39,45 ----
+          icon=attacks/club-small.png
+          type=impact
+          range=melee
+!         damage=5
+          number=2
+      [/attack]
+      [attack]
+diff -rc cache/units/merfolk/Hunter.cfg editable/units/merfolk/Hunter.cfg
+*** cache/units/merfolk/Hunter.cfg	2012-01-29 09:58:39.957744405 +0100
+--- editable/units/merfolk/Hunter.cfg	2012-01-29 10:03:11.263438794 +0100
+***************
+*** 37,43 ****
+          description=_"spear"
+          type=pierce
+          range=melee
+!         damage=4
+          number=2
+      [/attack]
+      [attack]
+--- 37,43 ----
+          description=_"spear"
+          type=pierce
+          range=melee
+!         damage=5
+          number=2
+      [/attack]
+      [attack]
+diff -rc cache/units/undead/Skeleton_Archer.cfg editable/units/undead/Skeleton_Archer.cfg
+*** cache/units/undead/Skeleton_Archer.cfg	2012-01-29 09:58:39.954744366 +0100
+--- editable/units/undead/Skeleton_Archer.cfg	2012-01-29 10:04:00.934445235 +0100
+***************
+*** 38,44 ****
+      [resistance]
+          blade=60
+          pierce=40
+!         impact=120
+      [/resistance]
+      [attack]
+          name=fist
+--- 38,44 ----
+      [resistance]
+          blade=60
+          pierce=40
+!         impact=110
+      [/resistance]
+      [attack]
+          name=fist
+diff -rc cache/units/undead/Skeleton.cfg editable/units/undead/Skeleton.cfg
+*** cache/units/undead/Skeleton.cfg	2012-01-29 09:58:39.954744366 +0100
+--- editable/units/undead/Skeleton.cfg	2012-01-29 10:04:08.926439249 +0100
+***************
+*** 112,118 ****
+      [resistance]
+          blade=60
+          pierce=40
+!         impact=120
+      [/resistance]
+      [attack]
+          name=axe
+--- 112,118 ----
+      [resistance]
+          blade=60
+          pierce=40
+!         impact=110
+      [/resistance]
+      [attack]
+          name=axe
+diff -rc cache/units/undead/Spirit_Ghost.cfg editable/units/undead/Spirit_Ghost.cfg
+*** cache/units/undead/Spirit_Ghost.cfg	2012-01-29 09:58:39.954744366 +0100
+--- editable/units/undead/Spirit_Ghost.cfg	2012-01-29 10:02:36.902387625 +0100
+***************
+*** 14,20 ****
+      level=1
+      alignment=chaotic
+      advances_to=Wraith,Shadow
+!     cost=20
+      usage=scout
+      description= _ "Enslaved within a shroud of enchantments, a trapped spirit may be likened to the wind in the sails of a ship. This damned vessel becomes an unfailing servant which can be bound to whatever task their master sees fit."+{SPECIAL_NOTES}+{SPECIAL_NOTES_DRAIN}+{SPECIAL_NOTES_SPIRIT}+{SPECIAL_NOTES_ARCANE}
+      die_sound=wail-long.wav
+--- 14,20 ----
+      level=1
+      alignment=chaotic
+      advances_to=Wraith,Shadow
+!     cost=19
+      usage=scout
+      description= _ "Enslaved within a shroud of enchantments, a trapped spirit may be likened to the wind in the sails of a ship. This damned vessel becomes an unfailing servant which can be bound to whatever task their master sees fit."+{SPECIAL_NOTES}+{SPECIAL_NOTES_DRAIN}+{SPECIAL_NOTES_SPIRIT}+{SPECIAL_NOTES_ARCANE}
+      die_sound=wail-long.wav
+diff -rc cache/units/wose/Ancient.cfg editable/units/wose/Ancient.cfg
+*** cache/units/wose/Ancient.cfg	2012-01-29 09:58:39.954744366 +0100
+--- editable/units/wose/Ancient.cfg	2012-01-29 10:12:11.154757817 +0100
+***************
+*** 18,23 ****
+--- 18,26 ----
+      description= _ "There is a curious story of a farmer who had a great oak in his lawn, a tree which had stood when his father first broke the soil on that land, and under which his family had many memories. It was thus a shock to him, one morning, when he awoke to find it somehow spirited away, with nothing but a bare patch of earth where it once stood.
+  
+  Such encounters are all that is known of what are presumably the most ancient of woses."+{SPECIAL_NOTES}+{SPECIAL_NOTES_AMBUSH}+{SPECIAL_NOTES_REGENERATES}
++     [resistance]
++         cold=100
++     [/resistance]
+      [portrait]
+          size=400
+          side="left"
+diff -rc cache/units/wose/Elder.cfg editable/units/wose/Elder.cfg
+*** cache/units/wose/Elder.cfg	2012-01-29 09:58:39.954744366 +0100
+--- editable/units/wose/Elder.cfg	2012-01-29 10:12:19.535617767 +0100
+***************
+*** 17,22 ****
+--- 17,25 ----
+      description= _ "Woses have been said to possess many shapes, all of them tree-like in form, and as they age, to increase in size. Tales tell of woses who resemble trees in this respect as well, towering over the creatures who walk beneath them. This is the greater part of why they are so rarely seen — standing in the slumber which they so often do, a wose of that stature appears to be nothing more than an oddly-shaped tree. Even a careless elf can sometimes be fooled.
+  
+  Woses are not warriors by any means, but their great strength can easily be turned to violence, should someone manage to raise the ire of these creatures."+{SPECIAL_NOTES}+{SPECIAL_NOTES_AMBUSH}+{SPECIAL_NOTES_REGENERATES}
++     [resistance]
++         cold=100
++     [/resistance]
+      [portrait]
+          size=400
+          side="left"
+diff -rc cache/units/wose/Wose.cfg editable/units/wose/Wose.cfg
+*** cache/units/wose/Wose.cfg	2012-01-29 09:58:39.954744366 +0100
+--- editable/units/wose/Wose.cfg	2012-01-29 10:12:28.095474839 +0100
+***************
+*** 18,23 ****
+--- 18,26 ----
+      description= _ "Rarely seen even by elves, the Wose is an order of creature about which little is known. The elves are the source of most of this knowledge; they know that these beings are not descended from trees, despite the similarity in form, and they know that a wose is more closely tied to the faerie world than the elves themselves, though in a different way. The motives and workings of their kind are unknown, though most subscribe to the obvious theory that woses are dedicated wardens of the natural world.
+  
+  Woses are utterly unwarlike, but possess a great strength. They are, however, neither used to, nor quick at moving around."+{SPECIAL_NOTES}+{SPECIAL_NOTES_AMBUSH}+{SPECIAL_NOTES_REGENERATES}
++     [resistance]
++         cold=100
++     [/resistance]
+      [portrait]
+          size=400
+          side="left"

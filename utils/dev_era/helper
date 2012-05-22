@@ -1,0 +1,34 @@
+#!/bin/bash
+# this file does nothing
+# it includes helper functions
+
+# displays message
+function display_message {
+  echo -e ">>> \e[1;36m$1\e[0m..."
+}
+
+# checks if line is attribute
+# and has differned value that null
+function line_match {
+  if [[ "$1" =~ "$2=" && ! "$1" =~ 'null' ]]
+    then return 0
+    else return 1
+  fi
+}
+
+# injects id of the era
+# to all attribute contents
+function line_replace {
+  prefix="$NAME $RELEASE"
+  echo "$1" | sed "s/$2=/$2=$prefix /" | sed "s/,/,$prefix /g"
+}
+
+# saves differences between cache and editable trees
+# by writing them to current release patch
+function save_patch {
+  if [ -d 'cache' ] && [ -d 'editable' ] ; then
+    diff -rc cache/factions editable/factions > $1
+    diff -rc cache/units editable/units      >> $1
+  fi
+}
+
