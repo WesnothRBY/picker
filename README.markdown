@@ -13,5 +13,4 @@ There was random addon called WCG for 1.8 (and earlier wesnoth versions) maintai
 * Conservative - maps distributed with wesnoth
 
 ### Eras ###
-* Dev work in progress on more awesome MP era
 * No mirror era ported to work with MP campaigns
