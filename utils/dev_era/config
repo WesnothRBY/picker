@@ -1,8 +1,0 @@
-#!/bin/bash
-# this file does nothing
-# it includes global variables
-
-SRC=/opt/games/share/wesnoth/data/
-NAME='RBY Dev'
-RELEASE=3
-
