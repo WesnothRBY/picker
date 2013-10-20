@@ -1,0 +1,13 @@
+border_size=1
+usage=map
+
+_off^_usr   , Xos         , Xos         , Xos         , Xos         , Xos         , _off^_usr   , _off^_usr   , Wwf         , _off^_usr   , _off^_usr   , Xos         , Xos         , Xos         , Xos         , Xos         , _off^_usr   
+_off^_usr   , _off^_usr   , _off^_usr   , Xos         , _off^_usr   , _off^_usr   , Wwf         , Wwf         , Urb         , Wwf         , Wwf         , _off^_usr   , _off^_usr   , Xos         , _off^_usr   , _off^_usr   , _off^_usr   
+Xos         , _off^_usr   , _off^_usr   , _off^_usr   , Wwf         , Wwf         , Urb         , Urb         , Urb         , Urb         , Urb         , Wwf         , Wwf         , _off^_usr   , _off^_usr   , _off^_usr   , Xos         
+Qxu         , Xos         , Xos         , Wwg         , Wwf         , Urb         , Urb^Xo      , Urb         , Urb         , Urb         , Urb^Xo      , Urb         , Wwf         , Wwg         , Xos         , Xos         , Qxu         
+Qxu         , Qxu         , Qxu         , Wwg         , Wwf         , Urb^Xo      , 1 Urb       , Urb^Xo      , Urb^Ii      , Urb^Xo      , 2 Urb       , Urb^Xo      , Wwf         , Wwg         , Qxu         , Qxu         , Qxu         
+Qxu         , Qxu         , Qxu         , Qxu         , Wwf         , Urb^Xo      , Urb^Xo      , Urb^Xo      , Urb         , Urb^Xo      , Urb^Xo      , Urb^Xo      , Wwf         , Qxu         , Qxu         , Qxu         , Qxu         
+Qxu         , Qxu         , Qxu         , Qxu         , Qxu         , Urb         , Urb         , Urb         , Urb         , Urb         , Urb         , Urb         , Qxu         , Qxu         , Qxu         , Qxu         , Qxu         
+Qxu         , Qxu         , Qxu         , Qxu         , Qxu         , Qxu         , Qxu         , Urb         , Qxu         , Urb         , Qxu         , Qxu         , Qxu         , Qxu         , Qxu         , Qxu         , Qxu         
+Qxu         , Qxu         , Qxu         , Qxu         , Qxu         , Qxu         , Qxu         , Qxu         , Qxu         , Qxu         , Qxu         , Qxu         , Qxu         , Qxu         , Qxu         , Qxu         , Qxu         
+Qxu         , Qxu         , Qxu         , Qxu         , Qxu         , Qxu         , Qxu         , Qxu         , Qxu         , Qxu         , Qxu         , Qxu         , Qxu         , Qxu         , Qxu         , Qxu         , Qxu         
