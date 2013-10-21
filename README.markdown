@@ -16,3 +16,13 @@ There was random addon called WCG for 1.8 (and earlier wesnoth versions) maintai
 
 * No mirror era ported to work with MP campaigns
          
+#### What's New in v1.20.23:
+
+#### Eras
+
+* No ally mirror era: prohibits sharing faction with allies, but not with opponents.
+
+#### Map Pools
+
+* Classic 2v2 - includes Clash, Loris River, Paths of Daggers, and Xanthe Chaos
+* Interactive - negotiate a map pool with your opponent via menus, then play on it
