@@ -5,8 +5,8 @@ RBY Map Sets: /campaigns/
     "Random" minimap dipslay in /campaigns/maps/
     Relying on macros from      /macros/RBY_Base.cfg
     
-RBY Era: /eras/
-    Definition in               /eras/RBY_No_Mirror.cfg
+RBY Eras: /eras/
+    Definitions in              /eras/RBY_No_Mirror.cfg
     Code that does the work in  /macros/RBY_Era.cfg
     Also some macros from       /macros/RBY_Base.cfg
 
