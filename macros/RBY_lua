@@ -1,0 +1,168 @@
+--<<
+	local helper = wesnoth.require("lua/helper.lua")
+	local H = helper
+	local V = helper.set_wml_var_metatable {}
+	local W = helper.set_wml_action_metatable {}
+	local T = helper.set_wml_tag_metatable {}
+
+	local multiplayer_sides = H.get_variable_array("factions.multiplayer_side") -- this assumes that the "factions" variable has already been initialized
+
+	RBY = {}
+
+	-- Give faction at multiplayer_sides[`faction`] to side with number `side`
+	function RBY.give_faction(faction, side)
+		W.store_unit({
+			T.filter { side = side , canrecruit=true } ,
+			variable = "old_leader",
+			kill = true
+		})
+
+		W.set_recruit({
+			side = side ,
+			recruit = multiplayer_sides[faction].recruit
+		})
+
+		W.set_variables({
+			name = "leader_arr" ,
+			T.split {
+					list = multiplayer_sides[faction].random_leader,
+					separator = ",",
+					key = "type",
+					remove_empty = true
+				}
+		})
+
+		if (not V.leader_arr or V.leader_arr.length == 0) then
+			W.set_variables({
+				name = "leader_arr" ,
+				T.split {
+						list = multiplayer_sides[faction].leader,
+						separator = ",",
+						key = "type",
+						remove_empty = true
+					}
+			})
+		end
+
+		if (not V.leader_arr or V.leader_arr.length == 0) then
+			error("RBY: For faction " .. faction .. " could not find any leader or random_leader entries.")
+		end
+
+		local random_leaders = H.get_variable_array("leader_arr")
+
+		local leader_select = math.random(1, V.leader_arr.length)
+
+		W.unit({
+		        id=V.old_leader.id,
+			type=random_leaders[leader_select].type,
+			x=V.old_leader.x,
+			y=V.old_leader.y,
+			random_gender=true,
+			canrecruit=true,
+			name=V.old_leader.name,
+			side=side
+		})
+
+		wesnoth.set_variable("old_leader")
+		wesnoth.set_variable("leader_arr")
+	end
+
+	-- Checks whether a side currently matches a faction in the faction database, marks as "picked" if so
+	function RBY.check_side_faction(side_number)
+		for i,multiplayer_side in ipairs(multiplayer_sides) do
+			local function recruits_match()
+				local count = 0
+				for searched in string.gmatch(multiplayer_side.recruit, "[^%s,][^,]*") do
+					count = count + 1
+					local found = false
+					for i, actual in ipairs(wesnoth.sides[side_number].recruit) do
+						if searched == actual then
+							found = true
+							break
+						end
+					end
+					if not found then return false end
+				end
+				return count == #wesnoth.sides[side_number].recruit
+			end
+			local function leader_matches()
+				local actual = wesnoth.get_units({ canrecruit = true, side = side_number })[1]
+				for searched in string.gmatch(multiplayer_side.leader, "[^%s,][^,]*") do
+					if searched == actual.type then return true end
+				end
+			end
+			if recruits_match() and leader_matches() then
+				multiplayer_side.picked=true
+				return true
+			end
+		end
+		return false
+	end
+
+	--This code will filter for units with canrecruit = yes and matching keys in 2nd arg.
+	--Then it will replace units with canrecruit = yes and matching keys in 1st arg with
+	--random leaders in factions which are different from these.
+	--It assumes factions has been loaded like in the GRAB_DEFAULT_ERA macro.
+	--For the "expected" previous behavior, RBY.redistribute_factions({type = Yeti} {}}
+
+	function RBY.no_mirror_redistribute_factions(filter_replace_these, filter_without_matching_these)
+		-- Make sure the filters have canrecruit=true so we only are matching leaders
+		filter_replace_these.canrecruit=true
+		filter_without_matching_these.canrecruit=true
+
+		-- First get the leaders we cannot match with into an array
+		local leaders = wesnoth.get_units(filter_without_matching_these)
+
+		-- Now check for each multiplayer side if that option is already picked
+		for i = 1, #multiplayer_sides do
+			multiplayer_sides[i].picked=false
+		end
+
+		for i,l in ipairs(leaders) do
+			RBY.check_side_faction(l.side) -- marks picked=true if it finds a match
+		end
+
+		-- Get a count of how many are available
+		local num_available = 0
+		for i,m in ipairs(multiplayer_sides) do
+			if not m.picked then
+				num_available = num_available + 1
+			end
+		end
+
+		-- Now get the leaders we intend to replace into an array
+		local replace_leaders = wesnoth.get_units(filter_replace_these)
+
+		for i = 1, #replace_leaders do
+			-- For each guy try to assign it to an unpicked faction
+			local proposed_faction
+
+			if (num_available > 0) then
+				repeat
+					 proposed_faction = math.random(1,#multiplayer_sides)
+				until not multiplayer_sides[proposed_faction].picked
+
+				multiplayer_sides[proposed_faction].picked = true
+				num_available = num_available - 1
+			else
+				proposed_faction = math.random(1,#multiplayer_sides) --They have all been picked, oh well.
+			end
+
+			RBY.give_faction(proposed_faction, replace_leaders[i].side)
+		end
+	end
+
+	function RBY.no_ally_mirror_redistribute_factions()
+		local yeti_filter = { canrecruit=true, type="Yeti" }
+
+		local yetis = wesnoth.get_units(yeti_filter)
+
+		while (#yetis > 0) do
+			RBY.no_mirror_redistribute_factions(
+				{ T.allied_with { side = yetis[1].side },
+				type = "Yeti" },
+				{ T.allied_with { side = yetis[1].side }})
+			yetis = wesnoth.get_units(yeti_filter)
+		end
+	end
+-->>
