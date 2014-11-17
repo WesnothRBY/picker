@@ -5,7 +5,29 @@
 	local W = helper.set_wml_action_metatable {}
 	local T = helper.set_wml_tag_metatable {}
 
-	local multiplayer_sides = H.get_variable_array("factions.multiplayer_side") -- this assumes that the "factions" variable has already been initialized
+	--local multiplayer_sides = H.get_variable_array("factions.multiplayer_side") -- this assumes that the "factions" variable has already been initialized
+	if not multiplayer_sides then
+		multiplayer_sides = {}
+		local era = wesnoth.game_config.era
+
+		if not era then
+			error("RBY could not find an era")
+		end
+
+		if not helper.get_child(era, "multiplayer_side", nil) then
+			error("RBY found an era which has no multiplayer sides, that's not going to work")
+		end
+
+		for multiplayer_side in helper.child_range(era, "multiplayer_side") do
+			if (not multiplayer_side.random_faction) then
+				table.insert(multiplayer_sides, multiplayer_side)
+			end
+		end
+	end
+
+	if #multiplayer_sides == 0 then
+		error ("RBY has no multiplayer sides, that's not going to work")
+	end
 
 	RBY = {}
 
@@ -60,7 +82,8 @@
 			random_gender=true,
 			canrecruit=true,
 			name=V.old_leader.name,
-			side=side
+			side=side,
+			T.variables { rby_assigned=true }
 		})
 
 		wesnoth.set_variable("old_leader")
@@ -72,7 +95,7 @@
 		for i,multiplayer_side in ipairs(multiplayer_sides) do
 			local function recruits_match()
 				local count = 0
-				for searched in string.gmatch(multiplayer_side.recruit, "[^%s,][^,]*") do
+				for searched in string.gmatch(multiplayer_side.recruit or "", "[^%s,][^,]*") do
 					count = count + 1
 					local found = false
 					for i, actual in ipairs(wesnoth.sides[side_number].recruit) do
@@ -92,11 +115,22 @@
 				end
 			end
 			if recruits_match() and leader_matches() then
-				multiplayer_side.picked=true
+				multiplayer_sides[i].picked=true
 				return true
 			end
 		end
 		return false
+	end
+
+	--This code will repace sides that have the "chose_random" field set to true with yetis,
+	--if they do not have the variable "rby_assigned=true" in their leaders
+	function RBY.replace_with_yetis()
+		local leaders = wesnoth.get_units({ canrecruit=true })
+		for i,leader in ipairs(leaders) do
+			if wesnoth.sides[leader.side].__cfg.chose_random and not leader.variables.rby_assigned then
+				wesnoth.transform_unit(leader, "Yeti")
+			end
+		end
 	end
 
 	--This code will filter for units with canrecruit = yes and matching keys in 2nd arg.
@@ -134,21 +168,25 @@
 		local replace_leaders = wesnoth.get_units(filter_replace_these)
 
 		for i = 1, #replace_leaders do
-			-- For each guy try to assign it to an unpicked faction
-			local proposed_faction
+			-- Check that he wasn't already assigned -- this is a safety check to prevent the event
+			-- from messing things up in more complicated scenarios like RBY_interactive
+			if not replace_leaders[i].variables.rby_assigned then
+				-- For each guy try to assign it to an unpicked faction
+				local proposed_faction
 
-			if (num_available > 0) then
-				repeat
-					 proposed_faction = math.random(1,#multiplayer_sides)
-				until not multiplayer_sides[proposed_faction].picked
+				if (num_available > 0) then
+					repeat
+						 proposed_faction = math.random(1,#multiplayer_sides)
+					until not multiplayer_sides[proposed_faction].picked
 
-				multiplayer_sides[proposed_faction].picked = true
-				num_available = num_available - 1
-			else
-				proposed_faction = math.random(1,#multiplayer_sides) --They have all been picked, oh well.
+					multiplayer_sides[proposed_faction].picked = true
+					num_available = num_available - 1
+				else
+					proposed_faction = math.random(1,#multiplayer_sides) --They have all been picked, oh well.
+				end
+
+				RBY.give_faction(proposed_faction, replace_leaders[i].side)
 			end
-
-			RBY.give_faction(proposed_faction, replace_leaders[i].side)
 		end
 	end
 
