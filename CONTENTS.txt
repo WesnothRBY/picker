@@ -11,11 +11,16 @@ RBY Map Sets: /campaigns/
     Definitions in              /campaigns/configs/
     "Random" minimap dipslay in /campaigns/maps/
     Relying on macros from      /macros/RBY_Base.cfg
-    
+
+RBY Modifications: /modifications/
+    Definitions in              /modifications/RBY_No_Mirror.cfg
+    Code that does the work in  /macros/RBY_Era.cfg
+    Lua backing it up           /macros/RBY_lua
+    Also some macros from       /macros/RBY_Base.cfg
+
 RBY Eras: /eras/
     Definitions in              /eras/RBY_No_Mirror.cfg
-    Code that does the work in  /macros/RBY_Era.cfg
-    Also some macros from       /macros/RBY_Base.cfg
+    Note: This is defunct and not loaded in _main.cfg anymore
 
 This code doesn't do anything?
     /resources/
