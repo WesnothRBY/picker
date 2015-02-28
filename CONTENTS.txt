@@ -9,7 +9,7 @@ RBY Maps: /scenarios/
 
 RBY Map Sets: /campaigns/
     Definitions in              /campaigns/configs/
-    "Random" minimap dipslay in /campaigns/maps/
+    "Random" minimap display in /campaigns/maps/
     Relying on macros from      /macros/RBY_Base.cfg
 
 RBY Modifications: /modifications/
